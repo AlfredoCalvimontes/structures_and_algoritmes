@@ -7,7 +7,8 @@ def binary_search(sorted_list: Sequence[int], target: int) -> int:
     """
     Perform binary search on a sorted sequence of integers.
     Returns the index of target, or -1 if not found.
-    Complexity: O(log n) time, O(1) extra space.
+    Time Complexity: O(log n)
+    Space Complexity: O(1)
     """
     lo = 0
     hi = len(sorted_list) - 1
@@ -25,8 +26,9 @@ def binary_search(sorted_list: Sequence[int], target: int) -> int:
 
 def quicksort(unsorted_list: Sequence[int]) -> List[int]:
     """
-    Return a new sorted list using quicksort (recursive, not in-place).
-    Complexity: O(n log n). Worst-case O(n^2).
+    Return a new sorted list using quicksort.
+    Time Complexity: Average O(n log n), Worst-case O(n²)
+    Space Complexity: Average O(log n), Worst-case (this) O(n)
     """
     list_lenght = len(unsorted_list)
     if list_lenght <= 1:
@@ -41,7 +43,8 @@ def quicksort(unsorted_list: Sequence[int]) -> List[int]:
 def mergesort(unsorted_list: Sequence[int]) -> List[int]:
     """
     Return a new sorted list using mergesort.
-    Complexity: O(n log n) time, O(n) extra space.
+    Time Complexity: Average O(n log n)
+    Space Complexity: O(n)
     """
     list_lenght = len(unsorted_list)
     if list_lenght <= 1:
@@ -71,7 +74,8 @@ def mergesort(unsorted_list: Sequence[int]) -> List[int]:
 def factorial_recursive(n: int) -> int:
     """
     Compute factorial recursively. Raises ValueError for negative inputs.
-    Complexity: O(n) time, O(n) recursion depth (call stack).
+    Space Complexity: O(n)
+    Complexity: O(n)
     """
     if n < 0:
         raise ValueError("factorial not defined for negative numbers")
@@ -83,7 +87,8 @@ def factorial_recursive(n: int) -> int:
 def fibonacci_recursive(n: int) -> int:
     """
     Compute nth Fibonacci number recursively.
-    Complexity: O(2^n).
+    Space Complexity: O(2^n)
+    Complexity: O(n)
     """
     if n < 0:
         raise ValueError("fibonacci not defined for negative numbers")

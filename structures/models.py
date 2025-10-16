@@ -136,11 +136,6 @@ class LinkedList(ABC, Generic[T]):
         """Remove and return the last node, or None if empty."""
         pass
 
-    @abstractmethod
-    def insert(self, index: int) -> Optional[LinkedListNode[T]]:
-        """Insert value at the given index, or at the end if index >= size."""
-        pass
-
     def _find_node_and_prev(
             self,
             value: T) -> PreviousAndCurrent[T]:
