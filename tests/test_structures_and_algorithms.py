@@ -9,7 +9,9 @@ from structures.algorithms import (
     mergesort,
     mergesort_in_place,
     factorial_recursive,
+    factorial_iterative,
     fibonacci_recursive,
+    fibonacci_iterative,
 )
 
 
@@ -241,6 +243,18 @@ def test_factorial_recursive():
     with pytest.raises(TypeError):
         factorial_recursive('a')
 
+def test_factorial_iterative():
+    # Zero and One
+    assert factorial_iterative(0) == 1
+    assert factorial_iterative(1) == 1
+    # Positive
+    assert factorial_iterative(5) == 120
+    assert factorial_iterative(10) == 3628800
+    # Negative
+    import pytest
+    with pytest.raises(ValueError):
+        factorial_iterative(-1)
+
 def test_fibonacci_recursive():
     # Zero and One
     assert fibonacci_recursive(0) == 0
@@ -254,3 +268,15 @@ def test_fibonacci_recursive():
     # Invalid type
     with pytest.raises(TypeError):
         fibonacci_recursive('a')
+
+def test_fibonacci_iterative():
+    # Zero and One
+    assert fibonacci_iterative(0) == 0
+    assert fibonacci_iterative(1) == 1
+    # Positive
+    assert fibonacci_iterative(5) == 5
+    assert fibonacci_iterative(10) == 55
+    # Negative
+    import pytest
+    with pytest.raises(ValueError):
+        fibonacci_iterative(-2)

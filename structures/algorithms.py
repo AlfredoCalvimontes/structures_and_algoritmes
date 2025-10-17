@@ -172,6 +172,20 @@ def factorial_recursive(n: int) -> int:
     return n * factorial_recursive(n - 1)
 
 
+def factorial_iterative(n: int) -> int:
+    """
+    Compute factorial iterating. Raises ValueError for negative inputs.
+    Space Complexity: O(1)
+    Time Complexity: O(n)
+    """
+    if n < 0:
+        raise ValueError("factorial not defined for negative numbers")
+    result = 1
+    for i in range(2, n + 1):
+        result *= i
+    return result
+
+
 def fibonacci_recursive(n: int) -> int:
     """
     Compute nth Fibonacci number recursively.
@@ -185,3 +199,21 @@ def fibonacci_recursive(n: int) -> int:
     if n == 1:
         return 1
     return fibonacci_recursive(n - 1) + fibonacci_recursive(n - 2)
+
+
+def fibonacci_iterative(n: int) -> int:
+    """
+    Compute nth Fibonacci number iteratively.
+    Space Complexity: O(1)
+    Time Complexity: O(n)
+    """
+    if n < 0:
+        raise ValueError("fibonacci not defined for negative numbers")
+    if n == 0:
+        return 0
+    if n == 1:
+        return 1
+    a, b = 0, 1
+    for _ in range(2, n + 1):
+        a, b = b, a + b
+    return b

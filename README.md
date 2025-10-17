@@ -95,10 +95,24 @@ The time is linear because the function executes a constant amount of work (a co
 - **Space Complexity:** $O(n)$
 The space is also linear because the function's depth of recursion is $n$. Since each of the $n$ recursive calls is stored on the call stack until it resolves, the memory usage for the stack grows linearly with the input $n$.
 
+### Iterative Factorial
+- **How it works:** Computes n! by multiplying numbers from 1 to n in a loop, avoiding recursion.
+- **Time Complexity:** O(n)
+	- The function performs a constant amount of work for each integer from 2 to n, resulting in linear time.
+- **Space Complexity:** O(1)
+	- Only a fixed number of variables are used, regardless of n. No recursion stack is needed.
+
 ### Recursive Fibonacci
 - **How it works:** Computes nth Fibonacci number by summing results of previous two numbers recursively.
 - **Time Complexity:** O(2^n)
 The time is exponential due to redundant calculations. The function repeatedly computes the same smaller Fibonacci numbers, causing the total number of operations to grow like 2^n. This makes the naive recursive approach highly inefficient.
 - **Space Complexity:** O(n) 💾
 The extra space is linear (O(n)) because it's determined by the recursion depth on the call stack. The longest chain of recursive calls, n→n−1→⋯→1, means the stack size grows linearly with the input n.
+
+### Iterative Fibonacci
+- **How it works:** Computes the nth Fibonacci number by iteratively summing the previous two numbers, starting from 0 and 1.
+- **Time Complexity:** O(n)
+	- The function loops from 2 to n, performing a constant amount of work per iteration.
+- **Space Complexity:** O(1)
+	- Only a fixed number of variables are used to track the last two Fibonacci numbers. No recursion stack is needed.
 --
