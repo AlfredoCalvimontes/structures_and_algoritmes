@@ -5,6 +5,7 @@ from structures.algorithms import (
     binary_search,
     binary_search_recursive,
     quicksort,
+    quicksort_in_place,
     mergesort,
     factorial_recursive,
     fibonacci_recursive,
@@ -144,6 +145,36 @@ def test_quicksort():
     # Invalid type
     with pytest.raises(TypeError):
         quicksort(None)
+
+def test_quicksort_in_place():
+    # Empty
+    arr = []
+    quicksort_in_place(arr)
+    assert arr == []
+    # Single
+    arr = [1]
+    quicksort_in_place(arr)
+    assert arr == [1]
+    # Duplicates
+    arr = [2, 2, 2]
+    quicksort_in_place(arr)
+    assert arr == [2, 2, 2]
+    # Negatives
+    arr = [-1, 0, 1]
+    quicksort_in_place(arr)
+    assert arr == [-1, 0, 1]
+    # Sorted
+    arr = [1, 2, 3, 4, 5]
+    quicksort_in_place(arr)
+    assert arr == [1, 2, 3, 4, 5]
+    # Reverse
+    arr = [5, 4, 3, 2, 1]
+    quicksort_in_place(arr)
+    assert arr == [1, 2, 3, 4, 5]
+    # Mixed
+    arr = [5, 3, 8, 1, 2, 9, 5]
+    quicksort_in_place(arr)
+    assert arr == sorted([5, 3, 8, 1, 2, 9, 5])
 
 def test_mergesort():
     # Empty

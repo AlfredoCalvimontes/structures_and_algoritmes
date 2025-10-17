@@ -53,13 +53,22 @@ The time is logarithmic because the function discards half of the search space i
 - **Space Complexity:** O(logn)
 The space is logarithmic because of the recursion depth. Since the problem size is halved in each step, the function performs O(logn) nested recursive calls. Each of these calls consumes a small amount of memory on the call stack, making the total auxiliary space proportional to O(logn).
 
-### Quicksort
+### Quicksort in Place
 - **How it works:** Recursively partitions the list around a pivot, sorting sublists.
 - **Time Complexity:** O(nlogn) to O(n^2)
 Average Case (O(nlogn)): When the pivot splits the list roughly in half, the work is O(n) per level across O(logn) levels, resulting in O(nlogn).
 Worst Case (O(n^2)): Occurs when the pivot is consistently the smallest or largest element, leading to highly unequal partitions. This forces the algorithm through O(n) levels of recursion, with O(n) work at each level, resulting in O(n^2).
 - **Space Complexity:** O(n)
 This implementation uses O(n) extra space because it creates new lists (left, middle, right) in every recursive call to hold the partitioned elements. This temporary storage dominates the space required, even though a more efficient "in-place" version would only require O(logn) for the recursion stack.
+
+### Quicksort
+- **How it works:** It sorts the array in-place by repeatedly partitioning sub-arrays around a pivot and managing the sub-array boundaries using an explicit stack instead of recursion
+- **Time Complexity:** O(nlogn) to O(n^2)
+The time complexity is the same as recursive Quicksort:
+    - Average Case (O(nlogn)): Achieved when balanced partitioning is performed O(logn) times, with O(n) work at each level.
+    - Worst Case (O(n^2)): Occurs with poor pivot selection (e.g., always the smallest/largest element), leading to O(n) partitioning levels.
+- **Space Complexity:** O(logn)
+The space is logarithmic (O(logn)) because this iterative version uses an explicit stack to store sub-array boundaries. By design, the maximum stack size (the depth of the recursion tree) is typically optimized to be O(logn), making it more memory-efficient than a standard recursive Quicksort, which can hit O(n) space in the worst case.
 
 ### Mergesort
 - **How it works:** Recursively splits the list, sorts, and merges sublists.
