@@ -3,6 +3,7 @@ import pytest
 from structures.models import Stack, Queue, SimpleLinkedList, TailedLinkedList
 from structures.algorithms import (
     binary_search,
+    binary_search_recursive,
     quicksort,
     mergesort,
     factorial_recursive,
@@ -10,7 +11,6 @@ from structures.algorithms import (
 )
 
 
-# Stack tests
 def test_stack():
     # Empty stack
     s = Stack()
@@ -32,7 +32,6 @@ def test_stack():
     with pytest.raises(IndexError):
         s.pop()
 
-# Queue tests
 def test_queue():
     # Empty queue
     q = Queue()
@@ -52,7 +51,6 @@ def test_queue():
     with pytest.raises(IndexError):
         q.dequeue()
 
-# SimpleLinkedList tests
 def test_simple_linked():
     # Empty list
     ll = SimpleLinkedList[int]()
@@ -73,7 +71,6 @@ def test_simple_linked():
     assert list(ll) == [0, 2]
     assert ll.delete(99) is False
 
-# TailedLinkedList tests
 def test_tailed_linked():
     # Empty list
     ll = TailedLinkedList[int]()
@@ -94,7 +91,6 @@ def test_tailed_linked():
     assert list(ll) == [0, 2]
     assert ll.delete(99) is False
 
-# Binary search tests
 def test_binary_search():
     # Empty
     assert binary_search([], 1) == -1
@@ -112,7 +108,23 @@ def test_binary_search():
     assert binary_search(arr, 7) == 3
     assert binary_search(arr, 2) == -1
 
-# Quicksort tests
+def test_binary_search_recursive():
+    # Empty
+    assert binary_search_recursive([], 1) == -1
+    # Single
+    assert binary_search_recursive([1], 1) == 0
+    assert binary_search_recursive([1], 2) == -1
+    # Duplicates
+    arr_dup = [1, 2, 2, 2, 3]
+    assert binary_search_recursive(arr_dup, 2) in {1,2,3}
+    # Negatives
+    arr_neg = [-5, -2, 0, 3]
+    assert binary_search_recursive(arr_neg, -2) == 1
+    # Found and Not Found
+    arr = [1, 3, 4, 7, 9, 10]
+    assert binary_search_recursive(arr, 7) == 3
+    assert binary_search_recursive(arr, 2) == -1
+
 def test_quicksort():
     # Emtpy
     assert quicksort([]) == []
@@ -133,8 +145,6 @@ def test_quicksort():
     with pytest.raises(TypeError):
         quicksort(None)
 
-
-# Mergesort tests
 def test_mergesort():
     # Empty
     assert mergesort([]) == []
@@ -155,7 +165,6 @@ def test_mergesort():
     with pytest.raises(TypeError):
         mergesort(None)
 
-# Factorial tests
 def test_factorial_recursive():
     # Zero and One
     assert factorial_recursive(0) == 1
@@ -170,7 +179,6 @@ def test_factorial_recursive():
     with pytest.raises(TypeError):
         factorial_recursive('a')
 
-# Fibonacci tests
 def test_fibonacci_recursive():
     # Zero and One
     assert fibonacci_recursive(0) == 0

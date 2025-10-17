@@ -46,6 +46,13 @@ The time is logarithmic because the algorithm eliminates half of the search spac
 - **Space Complexity:** O(1)
 The space is constant because the function only uses a fixed number of variables (lo, hi, mid, val) regardless of the input list's size n. No new data structures are allocated that would grow with n.
 
+### Binary Search Recursive
+- **How it works:** Searches for a target in a sorted list by repeatedly dividing the search interval in half.
+- **Time Complexity:** O(logn)
+The time is logarithmic because the function discards half of the search space in every recursive call. The number of operations required is proportional to the logarithm of n (logn), resulting in highly efficient performance.
+- **Space Complexity:** O(logn)
+The space is logarithmic because of the recursion depth. Since the problem size is halved in each step, the function performs O(logn) nested recursive calls. Each of these calls consumes a small amount of memory on the call stack, making the total auxiliary space proportional to O(logn).
+
 ### Quicksort
 - **How it works:** Recursively partitions the list around a pivot, sorting sublists.
 - **Time Complexity:** O(nlogn) to O(n^2)

@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import List, Sequence
+from typing import List, Sequence, Optional
 
 
 def binary_search(sorted_list: Sequence[int], target: int) -> int:
@@ -22,6 +22,31 @@ def binary_search(sorted_list: Sequence[int], target: int) -> int:
         else:
             hi = mid - 1
     return -1
+
+
+def binary_search_recursive(
+        sorted_list: Sequence[int],
+        target: int,
+        lo: int = 0,
+        hi: Optional[int] = None) -> int:
+    """
+    Perform binary search recursively on a sorted sequence of integers.
+    Returns the index of target, or -1 if not found.
+    Time Complexity: O(log n)
+    Space Complexity: O(log n)
+    """
+    if hi is None:
+        hi = len(sorted_list) - 1
+    if lo > hi:
+        return -1
+    mid = (lo + hi) // 2
+    val = sorted_list[mid]
+    if val == target:
+        return mid
+    elif val < target:
+        return binary_search_recursive(sorted_list, target, mid + 1, hi)
+    else:
+        return binary_search_recursive(sorted_list, target, lo, mid - 1)
 
 
 def quicksort(unsorted_list: Sequence[int]) -> List[int]:
