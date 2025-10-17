@@ -122,6 +122,43 @@ def mergesort(unsorted_list: Sequence[int]) -> List[int]:
     return merged
 
 
+def mergesort_in_place(arr: List[int]) -> None:
+    """
+    In-place, non-recursive mergesort implementation.
+    Sorts the list in place.
+    Time Complexity: O(n log n)
+    Space Complexity: O(n)
+    """
+    n = len(arr)
+    if n <= 1:
+        return
+    size = 1
+    temp = [0] * n
+    while size < n:
+        for left_start in range(0, n, 2 * size):
+            mid = min(left_start + size, n)
+            right_end = min(left_start + 2 * size, n)
+            i, j, k = left_start, mid, left_start
+            while i < mid and j < right_end:
+                if arr[i] <= arr[j]:
+                    temp[k] = arr[i]
+                    i += 1
+                else:
+                    temp[k] = arr[j]
+                    j += 1
+                k += 1
+            while i < mid:
+                temp[k] = arr[i]
+                i += 1
+                k += 1
+            while j < right_end:
+                temp[k] = arr[j]
+                j += 1
+                k += 1
+        arr[:n] = temp[:n]
+        size *= 2
+
+
 def factorial_recursive(n: int) -> int:
     """
     Compute factorial recursively. Raises ValueError for negative inputs.

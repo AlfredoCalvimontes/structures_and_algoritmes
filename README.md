@@ -53,7 +53,7 @@ The time is logarithmic because the function discards half of the search space i
 - **Space Complexity:** O(logn)
 The space is logarithmic because of the recursion depth. Since the problem size is halved in each step, the function performs O(logn) nested recursive calls. Each of these calls consumes a small amount of memory on the call stack, making the total auxiliary space proportional to O(logn).
 
-### Quicksort in Place
+### Quicksort
 - **How it works:** Recursively partitions the list around a pivot, sorting sublists.
 - **Time Complexity:** O(nlogn) to O(n^2)
 Average Case (O(nlogn)): When the pivot splits the list roughly in half, the work is O(n) per level across O(logn) levels, resulting in O(nlogn).
@@ -61,7 +61,7 @@ Worst Case (O(n^2)): Occurs when the pivot is consistently the smallest or large
 - **Space Complexity:** O(n)
 This implementation uses O(n) extra space because it creates new lists (left, middle, right) in every recursive call to hold the partitioned elements. This temporary storage dominates the space required, even though a more efficient "in-place" version would only require O(logn) for the recursion stack.
 
-### Quicksort
+### Quicksort in Place
 - **How it works:** It sorts the array in-place by repeatedly partitioning sub-arrays around a pivot and managing the sub-array boundaries using an explicit stack instead of recursion
 - **Time Complexity:** O(nlogn) to O(n^2)
 The time complexity is the same as recursive Quicksort:
@@ -78,6 +78,15 @@ The time complexity is O(nlogn) across the best, average, and worst cases, makin
     - Work Per Level (O(n)): At every level of the tree, the merge step compares and combines all n elements, requiring O(n) total operations.
 - **Space Complexity:** O(n)
 The extra space is linear (O(n)). This is because the provided implementation is not "in-place" and requires a new temporary array (merged) to store n elements during the combine step. While the recursion stack only adds O(logn) space, the O(n) requirement for temporary storage dominates the total space complexity.
+
+### Mergesort in Place
+- **How it works:** It sorts the list iteratively from the bottom-up by repeatedly merging sub-arrays of increasing size in O(nlogn) time, utilizing a full-sized auxiliary array for temporary storage.
+- **Time Complexity:** O(nlogn)
+The time is O(nlogn) across all cases because the algorithm efficiently combines two factors:
+    - O(logn) Passes: The outer loop runs O(logn) times as the merge size is doubled.
+    - O(n) Work Per Pass: In each pass, every element is processed exactly once during the merging steps. The product of the two gives the total time complexity: O(nlogn).
+- **Space Complexity:** O(n)
+The extra space is linear (O(n)). Although it avoids the O(logn) space of a recursion stack, the implementation requires a full-sized auxiliary array (temp = [0] * n) to hold the merged results before copying them back. The size of this temporary array, proportional to n, dictates the overall space complexity.
 
 ### Recursive Factorial
 - **How it works:** Computes n! by multiplying n by factorial(n-1).

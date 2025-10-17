@@ -7,6 +7,7 @@ from structures.algorithms import (
     quicksort,
     quicksort_in_place,
     mergesort,
+    mergesort_in_place,
     factorial_recursive,
     fibonacci_recursive,
 )
@@ -195,6 +196,36 @@ def test_mergesort():
     # Invalid type
     with pytest.raises(TypeError):
         mergesort(None)
+
+def test_mergesort_in_place():
+    # Empty
+    arr = []
+    mergesort_in_place(arr)
+    assert arr == []
+    # Single
+    arr = [1]
+    mergesort_in_place(arr)
+    assert arr == [1]
+    # Duplicates
+    arr = [2, 2, 2]
+    mergesort_in_place(arr)
+    assert arr == [2, 2, 2]
+    # Negatives
+    arr = [-1, 0, 1]
+    mergesort_in_place(arr)
+    assert arr == [-1, 0, 1]
+    # Sorted
+    arr = [1, 2, 3, 4, 5]
+    mergesort_in_place(arr)
+    assert arr == [1, 2, 3, 4, 5]
+    # Reverse
+    arr = [5, 4, 3, 2, 1]
+    mergesort_in_place(arr)
+    assert arr == [1, 2, 3, 4, 5]
+    # Mixed
+    arr = [5, 3, 8, 1, 2, 9, 5]
+    mergesort_in_place(arr)
+    assert arr == sorted([5, 3, 8, 1, 2, 9, 5])
 
 def test_factorial_recursive():
     # Zero and One
